@@ -48,7 +48,30 @@ Answer:
         messages=[{"role": "user", "content": prompt}],
         temperature=0.2
     )
-    return response.choices[0].message.content.strip()
+
+    # Safely extract the returned text/content from the response to avoid attribute errors
+    content = None
+    try:
+        # Try attribute-style access first
+        choices = getattr(response, "choices", None)
+        if not choices and isinstance(response, dict):
+            choices = response.get("choices")
+
+        if choices and len(choices) > 0:
+            choice = choices[0]
+            # choice may be object-like or dict-like
+            msg = getattr(choice, "message", None) or (choice.get("message") if isinstance(choice, dict) else None)
+            if msg:
+                content = getattr(msg, "content", None) or (msg.get("content") if isinstance(msg, dict) else None)
+            else:
+                # fallback: older/alternate formats may have 'text' directly on the choice
+                content = getattr(choice, "text", None) or (choice.get("text") if isinstance(choice, dict) else None)
+    except Exception:
+        content = None
+
+    if not content:
+        return "I don't have enough information from the document."
+    return content.strip()
 
 # ---- STREAMLIT UI ----
 st.set_page_config(page_title="RAG Chatbot", layout="centered")
