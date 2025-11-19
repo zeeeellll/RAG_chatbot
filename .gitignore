@@ -1,0 +1,40 @@
+# Ignore virtual environments
+venv/
+env/
+.env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Logs
+*.log
+
+# Local data files
+*.sqlite3
+*.db
+
+# OS crap
+.DS_Store
+Thumbs.db
