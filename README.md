@@ -1,6 +1,6 @@
-# YPV Chatbot: RAG Chatbot with PDF Upload
+#  RAG Chatbot with PDF Upload
 
-The YPV Chatbot is a Streamlit-based application that allows users to upload PDF documents and interact with them using a Retrieval-Augmented Generation (RAG) system. It leverages Sentence Transformers for embedding generation, FAISS for efficient similarity search, and OpenAI's GPT models for generating conversational responses.
+The Chatbot is a Streamlit-based application that allows users to upload PDF documents and interact with them using a Retrieval-Augmented Generation (RAG) system. It leverages Sentence Transformers for embedding generation, FAISS for efficient similarity search, and OpenAI's GPT models for generating conversational responses.
 
 ## Features
 
