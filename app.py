@@ -78,7 +78,7 @@ def create_vector_index(chunks, model):
         # Create FAISS index
         dim = embeddings.shape[1]
         index = faiss.IndexFlatIP(dim)
-        index.add(embeddings)
+        index.add(embeddings) # type: ignore
         
         return index
     except Exception as e:
